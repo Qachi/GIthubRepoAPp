@@ -21,10 +21,12 @@ class DetailActivity : AppCompatActivity() {
 
         val actionBar = supportActionBar
 
-        intent?.let { it ->
-            val details: Item? = it.getParcelableExtra("EXTRA_DETAILS") as Item?
-            details?.let {
-                actionBar?.title = it.name
+        intent.let { it ->
+            val details: Item = it.getParcelableExtra("EXTRA_DETAILS") as Item
+            details.let {
+                if (actionBar != null) {
+                    actionBar.title = it.name
+                }
                 loadWebView(it.htmlUrl)
             }
         }

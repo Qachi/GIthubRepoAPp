@@ -40,13 +40,13 @@ class GitHubRepoViewModel(application: Application) : AndroidViewModel(applicati
     /**
      * Factory for constructing AuthViewModel with parameter
      */
-    class Factory(val app: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    class Factory(private val app: Application) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(GitHubRepoViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
                 return GitHubRepoViewModel(app) as T
             }
-            throw IllegalArgumentException("Unable to construct viewmodel")
+            throw IllegalArgumentException("Unable to construct viewModel")
         }
     }
 

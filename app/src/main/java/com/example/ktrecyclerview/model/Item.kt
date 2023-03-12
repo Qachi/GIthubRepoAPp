@@ -92,9 +92,9 @@ data class Item(
     @SerializedName("labels_url")
     val labelsUrl: String,
     @SerializedName("language")
-    val language: String?,
+    val language: String,
     @SerializedName("languages_url")
-    val languagesUrl: String?,
+    val languagesUrl: String,
     @SerializedName("merges_url")
     val mergesUrl: String,
     @SerializedName("milestones_url")
@@ -112,7 +112,7 @@ data class Item(
     @SerializedName("open_issues_count")
     val openIssuesCount: Int,
     @SerializedName("owner")
-    val owner: Owner?,
+    val owner: Owner,
     @SerializedName("private")
     val `private`: Boolean,
     @SerializedName("pulls_url")

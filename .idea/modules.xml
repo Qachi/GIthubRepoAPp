@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KtRecyclerView.iml" filepath="$PROJECT_DIR$/.idea/modules/KtRecyclerView.iml" group="KtRecyclerView" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="KtRecyclerView/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KtRecyclerView.iml" filepath="$PROJECT_DIR$/.idea/modules/KtRecyclerView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/KtRecyclerView.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/KtRecyclerView.app.iml" />
     </modules>
   </component>
 </project>
