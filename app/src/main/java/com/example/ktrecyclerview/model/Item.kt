@@ -3,9 +3,8 @@ package com.example.ktrecyclerview.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
+@kotlinx.parcelize.Parcelize
 data class Item(
     @SerializedName("archive_url")
     val archiveUrl: String,

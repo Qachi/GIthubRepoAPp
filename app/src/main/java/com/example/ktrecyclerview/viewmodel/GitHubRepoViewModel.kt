@@ -1,7 +1,12 @@
 package com.example.ktrecyclerview.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.ktrecyclerview.model.Item
 import com.example.ktrecyclerview.network.ApiService
 import com.example.ktrecyclerview.network.Network
@@ -15,9 +20,6 @@ class GitHubRepoViewModel(application: Application) : AndroidViewModel(applicati
 
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean> = _isLoading
-
-
-
 
     fun startFetchGithubRepo() {
 
@@ -49,5 +51,4 @@ class GitHubRepoViewModel(application: Application) : AndroidViewModel(applicati
             throw IllegalArgumentException("Unable to construct viewModel")
         }
     }
-
 }

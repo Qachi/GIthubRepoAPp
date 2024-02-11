@@ -1,5 +1,6 @@
 package com.example.ktrecyclerview
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.net.http.SslError
 import android.os.Bundle
@@ -9,21 +10,24 @@ import android.webkit.SslErrorHandler
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ktrecyclerview.databinding.ActivityDetailBinding
 import com.example.ktrecyclerview.model.Item
-import kotlinx.android.synthetic.main.activity_detail.*
-
 
 class DetailActivity : AppCompatActivity() {
 
+    private lateinit var binding : ActivityDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        binding =ActivityDetailBinding.inflate(layoutInflater)
+        val view=binding.root
+        setContentView(view)
 
         val actionBar = supportActionBar
 
-        intent.let { it ->
-            val details: Item = it.getParcelableExtra("EXTRA_DETAILS") as Item
-            details.let {
+        intent?.let { it ->
+            val details: Item? = it.getParcelableExtra("EXTRA_DETAILS") as? Item
+            details?.let {
                 if (actionBar != null) {
                     actionBar.title = it.name
                 }
@@ -32,11 +36,11 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private fun loadWebView(url: String) {
-
-        webProgress.visibility = View.GONE
-
-        webView.webViewClient = object : WebViewClient() {
+        binding.webProgress.visibility = View.GONE
+        binding.webView.webViewClient = object : WebViewClient() {
+            @SuppressLint("WebViewClientOnReceivedSslError")
             override fun onReceivedSslError(
                 view: WebView,
                 handler: SslErrorHandler,
@@ -51,14 +55,15 @@ class DetailActivity : AppCompatActivity() {
                 favicon: Bitmap?
             ) {
                 super.onPageStarted(view, url, favicon)
-                webProgress.visibility = View.VISIBLE
+                binding.webProgress.visibility = View.VISIBLE
             }
 
             override fun onPageFinished(view: WebView, url: String) {
                 super.onPageFinished(view, url)
-                webProgress.visibility = View.GONE
+                binding.webProgress.visibility = View.GONE
             }
 
+            @Deprecated("Deprecated in Java")
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
                 view.loadUrl(url)
                 return true
@@ -73,11 +78,11 @@ class DetailActivity : AppCompatActivity() {
              */
             override fun onLoadResource(view: WebView, url: String) {
                 super.onLoadResource(view, url)
-                webProgress.incrementProgressBy(10)
+                binding.webProgress.incrementProgressBy(10)
             }
         }
-        webView.settings.javaScriptEnabled = true
-        webView.loadUrl(url)
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.loadUrl(url)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

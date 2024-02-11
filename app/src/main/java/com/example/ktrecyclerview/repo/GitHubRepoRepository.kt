@@ -4,10 +4,8 @@ import com.example.ktrecyclerview.model.Item
 import com.example.ktrecyclerview.network.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.lang.Exception
 
 class GitHubRepoRepository(private val apiService: ApiService) {
-
     suspend fun fetchGitHubRepo(q: String, sort: String, order: String): List<Item>? =
         withContext(Dispatchers.IO) {
             println("github repo here")
@@ -20,6 +18,5 @@ class GitHubRepoRepository(private val apiService: ApiService) {
             }catch (e: Throwable){
                 null
             }
-
         }
 }
